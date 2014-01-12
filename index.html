@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Real Swype on JS</title>
+
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="niceTouch.js"></script>
+</head>
+<body id="body">
+
+	<div class="nt-main-content">
+		<h1>niceTouch framework</h1>
+
+		<p>Example of using niceTouch framework for touch events detection.</p>
+
+		<p>Do an Action on display</p>
+
+		<div class="debug-container">
+			<p>
+				<span>Event: </span>
+				<span class="debug">none</span>
+			</p>
+
+			<p>
+				<span>Technical info: </span>
+				<span class="debug2">none</span>
+			</p>
+		</div>	
+
+		<div class="nt-params">
+			<div class="nt-params__row">
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Coordinate X on touchstart</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_xontouchstart">0</span>
+				</div>
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Coordinate Y on touchstart</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_yontouchstart">0</span>
+				</div>
+			</div>
+
+			<div class="nt-params__row">
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Coordinate X on touchmove</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_xontouchmove">0</span>
+				</div>
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Coordinate Y on touchmove</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_yontouchmove">0</span>
+				</div>
+			</div>
+
+			<div class="nt-params__row">
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Coordinate X on touchend</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_xontouchend">0</span>
+				</div>
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Coordinate Y on touchend</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_yontouchend">0</span>
+				</div>
+			</div>
+
+			<div class="nt-params__row">
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Event name</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_eventname">none</span>
+				</div>
+				<div class="nt-params__cell">
+					<label class="nt-params__cell-label">Event time</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_eventtime">none</span>
+				</div>
+			</div>
+
+			<div class="nt-params__row">
+				<div class="nt-params__cell nt-params__cell_three-cells">
+					<label class="nt-params__cell-label">Vertical Swipe direction</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_verticalswipedirection">none</span>
+				</div>
+				<div class="nt-params__cell nt-params__cell_three-cells">
+					<label class="nt-params__cell-label">Horizontal Swipe direction</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_horizontalswipedirection">none</span>
+				</div>
+				<div class="nt-params__cell nt-params__cell_three-cells">
+					<label class="nt-params__cell-label">Swipe direction</label>
+					<span class="nt-params__cell-value _nt-params__cell-value_swipedirection">none</span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<script>
+		$( function() {
+			var niceTouchObject = new niceTouch();
+			var body = document.getElementById('body');
+
+		body.addEventListener('touchstart', 
+			function(event) { 
+				$('._nt-params__cell-value_xontouchstart').text(niceTouchObject.onTouchStartCoord()[0]);
+				$('._nt-params__cell-value_yontouchstart').text(niceTouchObject.onTouchStartCoord()[1]);
+			},
+			false
+		);
+
+		body.addEventListener('touchmove', 
+			function(event) { 
+				$('._nt-params__cell-value_verticalswipedirection').text(niceTouchObject.verticalDirection());
+				$('._nt-params__cell-value_horizontalswipedirection').text(niceTouchObject.horizontalDirection());
+				$('._nt-params__cell-value_swipedirection').text(niceTouchObject.swipeDirection());
+
+				$('._nt-params__cell-value_xontouchmove').text(niceTouchObject.onTouchMoveCoord()[0]);
+				$('._nt-params__cell-value_yontouchmove').text(niceTouchObject.onTouchMoveCoord()[1]);
+			},
+			false
+		);
+
+		body.addEventListener('touchend', 
+			function(event) { 
+				$('._nt-params__cell-value_verticalswipedirection').text(niceTouchObject.verticalDirection());
+				$('._nt-params__cell-value_horizontalswipedirection').text(niceTouchObject.horizontalDirection());
+				$('._nt-params__cell-value_swipedirection').text(niceTouchObject.swipeDirection());
+
+				$('._nt-params__cell-value_eventtime').text(niceTouchObject.eventTime() + 'ms');
+
+				$('._nt-params__cell-value_eventname').text(niceTouchObject.eventName());
+
+				$('._nt-params__cell-value_xontouchend').text(niceTouchObject.onTouchEndCoord()[0]);
+				$('._nt-params__cell-value_yontouchend').text(niceTouchObject.onTouchEndCoord()[1]);
+			},
+			false
+		);	
+
+		});
+	</script>
+</body>
+</html>

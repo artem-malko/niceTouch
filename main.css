@@ -1,0 +1,64 @@
+
+html, body {
+	background: #eee;
+	height: 100%;
+}
+
+.nt-params {
+	margin: 50px auto;
+	width: 90%;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+
+	.nt-params__row {
+		border: 1px solid #ccc;
+		overflow: hidden;
+		background: #fff;
+	}
+
+	.nt-params__row:first-child {
+		border-top: 0;
+	}
+
+		.nt-params__cell {
+			position: relative;
+			float: left;
+			padding: 35px 25px 15px;
+			width: 50%;
+			text-align: center;
+			border: 1px solid #ccc;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.nt-params__cell_three-cells {
+			width: 33.33%;
+		}
+
+			.nt-params__cell-label {
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: #ccc;
+				padding: 1px 10px;
+				border-radius: 0 0 3px 0;
+				font-size: 18px;
+			}
+
+			.nt-params__cell-value {
+				font-size: 22px;
+				font-weight: bold;
+			}
+
+
+
+
+/*  */
+.debug-container {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+/*  */
